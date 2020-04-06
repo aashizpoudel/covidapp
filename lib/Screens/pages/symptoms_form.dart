@@ -1,7 +1,8 @@
+import 'package:covidapp/Screens/components/form_questions.dart';
 import 'package:flutter/material.dart';
 
 const headerStyle =
-    TextStyle(color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 18);
+    TextStyle(color: Colors.pink, fontWeight: FontWeight.bold, fontSize: 18);
 enum Sex { male, female, lgbt }
 enum Temperature { below, normal, high }
 enum SelfQuarantine { yes, no }
@@ -256,159 +257,124 @@ class _SymptomsFormState extends State<SymptomsForm> {
                 });
               },
             ),
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      'आफनो परिचय दिनुहोस',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  SizedBox(height: 20),
+                  Text(
+                    'आफनो परिचय दिनुहोस',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  TextFormField(
+                    controller: _name,
+                    validator: (value) {
+                      if (value.isNotEmpty) {
+                        return null;
+                      }
+                      return 'कृपया आफ्नो नाम लेख्नुहोस';
+                    },
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.people),
+                      labelText: 'नाम',
                     ),
-                    TextFormField(
-                      controller: _name,
-                      validator: (value) {
-                        if (value.isNotEmpty) {
-                          return null;
-                        }
-                        return 'कृपया आफ्नो नाम लेख्नुहोस';
-                      },
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.people),
-                        labelText: 'नाम',
-                      ),
+                  ),
+                  TextFormField(
+                    controller: _age,
+                    validator: (value) {
+                      if (value.isNotEmpty) {
+                        return null;
+                      }
+                      return 'कृपया आफ्नो उमेर लेख्नुहोस';
+                    },
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.people),
+                      labelText: 'उमेर',
                     ),
-                    TextFormField(
-                      controller: _age,
-                      validator: (value) {
-                        if (value.isNotEmpty) {
-                          return null;
-                        }
-                        return 'कृपया आफ्नो उमेर लेख्नुहोस';
-                      },
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.people),
-                        labelText: 'उमेर',
-                      ),
-                    ),
-                    Text('वडा नम्बर', style: headerStyle),
-                    DropdownButton(
+                  ),
+                  SizedBox(height: 20),
+                  Text('वडा नम्बर', style: headerStyle),
+                  DropdownButton(
                       isExpanded: true,
-                        hint: Text('आफ्नो वडा छान्नुहोस'),
-                        value: odaNo,
-                        items: getOdaList(10),
-                        onChanged: (value) {
-                          setState(() {
-                            odaNo = value;
-                          });
-                        }),
-                    TextFormField(
-                      controller: _tolNo,
-                      validator: (value) {
-                        if (value.isNotEmpty) {
+                      hint: Text('आफ्नो वडा छान्नुहोस'),
+                      value: odaNo,
+                      items: getOdaList(10),
+                      onChanged: (value) {
+                        setState(() {
+                          odaNo = value;
+                        });
+                      }),
+                  TextFormField(
+                    controller: _tolNo,
+                    validator: (value) {
+                      if (value.isNotEmpty) {
+                        return null;
+                      }
+                      return 'कृपया आफ्नो टोल/चौक लेख्नुहोस';
+                    },
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.build),
+                      labelText: 'टोल/चौक',
+                    ),
+                  ),
+                  TextFormField(
+                    controller: _gharNo,
+                    validator: (value) {
+                      if (value.isNotEmpty) {
+                        return null;
+                      }
+                      return 'कृपया आफ्नो घर नंबर लेख्नुहोस';
+                    },
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.home),
+                      labelText: 'घर नंबर',
+                    ),
+                  ),
+                  TextFormField(
+                    controller: _pnNo,
+                    validator: (value) {
+                      if (value.isNotEmpty) {
+                        return null;
+                      }
+                      return 'कृपया आफ्नो संपर्क नंबर लेख्नुहोस';
+                    },
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.phone),
+                      labelText: 'संपर्क नंबर',
+                    ),
+                  ),
+                  RaisedButton(
+                      color: Colors.pinkAccent,
+                      onPressed: () {
+                        if (_formKey.currentState.validate()) {
+                          return showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return Container(
+                                child: Column(
+                                  children: <Widget>[
+                                    Text('Congratz You Have Corona'),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        } else {
                           return null;
                         }
-                        return 'कृपया आफ्नो टोल/चौक लेख्नुहोस';
                       },
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.build),
-                        labelText: 'टोल/चौक',
-                      ),
-                    ),
-                    TextFormField(
-                      controller: _gharNo,
-                      validator: (value) {
-                        if (value.isNotEmpty) {
-                          return null;
-                        }
-                        return 'कृपया आफ्नो घर नंबर लेख्नुहोस';
-                      },
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.home),
-                        labelText: 'घर नंबर',
-                      ),
-                    ),
-                    TextFormField(
-                      controller: _pnNo,
-                      validator: (value) {
-                        if (value.isNotEmpty) {
-                          return null;
-                        }
-                        return 'कृपया आफ्नो संपर्क नंबर लेख्नुहोस';
-                      },
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.phone),
-                        labelText: 'संपर्क नंबर',
-                      ),
-                    ),
-                    RaisedButton(
-                        color: Colors.green,
-                        onPressed: () {
-                          if (_formKey.currentState.validate()) {
-                            return showModalBottomSheet(
-                                context: context,
-                                builder: (context) {
-                                  return Container(
-                                    child: Column(
-                                      children: <Widget>[
-                                        Text(
-                                          'Congratz You Have Corona'
-                                        )
-                                      ],
-                                    ),
-                                  );
-                                });
-                          }
-                          else{
-                            return null;
-                          }
-                        },
-                        child: Text(
-                          'Confirm & Submit',
-                          style: TextStyle(color: Colors.white),
-                        ))
-                  ],
-                ),
+                      child: Text(
+                        'Confirm & Submit',
+                        style: TextStyle(color: Colors.white),
+                      ))
+                ],
               ),
             )
           ],
         ),
       ),
-    );
-  }
-}
-
-class FormQuestions extends StatelessWidget {
-  const FormQuestions({
-    this.value,
-    @required this.title,
-    @required this.dropBuottonHint,
-    this.dropBuottonList,
-    this.onDropDownChanged,
-  });
-
-  final String title;
-  final String dropBuottonHint;
-  final List<DropdownMenuItem> dropBuottonList;
-  final value;
-  final Function onDropDownChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(title, style: headerStyle),
-        DropdownButton(
-            isExpanded: true,
-            hint: Text(dropBuottonHint),
-            value: value,
-            items: dropBuottonList,
-            onChanged: onDropDownChanged),
-      ],
     );
   }
 }

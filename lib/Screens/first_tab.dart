@@ -30,8 +30,8 @@ class FirstTab extends StatelessWidget {
                 ),
               ),
               RaisedButton(
-                onPressed: (){
-
+                onPressed: () {
+                  Navigator.of(context).pushNamed("/rahat");
                 },
                 color: Colors.pink,
                 child: Text(
@@ -55,27 +55,40 @@ class FirstTab extends StatelessWidget {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  Expanded(child: MiddleCard(onTap: (){
-                    DefaultTabController.of(context).animateTo(1);
-                  }, icon:Icons.nature_people, titleLabel: "कोभिड -१९ बारे",bodyLabel: "के हो कोभिड -१९?",)),
-                  Expanded(child: MiddleCard(onTap: (){
-                    Navigator.of(context).pushNamed("/vram");
-                  }, icon:Icons.nature_people, titleLabel: "कोभिड - १९ बारे भ्रमहरु",bodyLabel: "भ्रम र यथार्थ")),
+                  Expanded(
+                      child: MiddleCard(
+                    onTap: () {
+                      DefaultTabController.of(context).animateTo(1);
+                    },
+                    icon: Icons.nature_people,
+                    titleLabel: "कोभिड -१९ बारे",
+                    bodyLabel: "के हो कोभिड -१९?",
+                  )),
+                  Expanded(
+                      child: MiddleCard(
+                          onTap: () {
+                            Navigator.of(context).pushNamed("/vram");
+                          },
+                          icon: Icons.nature_people,
+                          titleLabel: "कोभिड - १९ बारे भ्रमहरु",
+                          bodyLabel: "भ्रम र यथार्थ")),
                 ],
               ),
               Row(
                 children: <Widget>[
                   Expanded(
-                    child: MiddleCard(onTap: (){},
+                    child: MiddleCard(
+                      onTap: () {},
                       titleLabel: 'समाचार',
                       bodyLabel: 'Covid-19 बारे समाचार',
                       icon: Icons.poll,
                     ),
                   ),
                   Expanded(
-                    child: MiddleCard(onTap: (){
-                      Navigator.pushNamed(context,"/liveupdates");
-                    },
+                    child: MiddleCard(
+                      onTap: () {
+                        Navigator.pushNamed(context, "/liveupdates");
+                      },
                       titleLabel: 'Live Updates',
                       bodyLabel: 'Covid-19 बारे Updates',
                       icon: Icons.update,
@@ -83,14 +96,15 @@ class FirstTab extends StatelessWidget {
                   )
                 ],
               ),
-             
             ],
           ),
         ),
         Center(
-          child:MiddleCard(icon: Icons.local_hospital, titleLabel: "चिसापानी अस्पताल हटलाइन", bodyLabel:"9860048078", onTap: (){
-
-          })
+          child: MiddleCard(
+              icon: Icons.local_hospital,
+              titleLabel: "चिसापानी अस्पताल हटलाइन",
+              bodyLabel: "9860048078",
+              onTap: () {}),
         ),
         Center(
           child: RaisedButton.icon(
