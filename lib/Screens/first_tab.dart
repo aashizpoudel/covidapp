@@ -78,7 +78,9 @@ class FirstTab extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                     child: MiddleCard(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/news');
+                      },
                       titleLabel: 'समाचार',
                       bodyLabel: 'Covid-19 बारे समाचार',
                       icon: Icons.poll,

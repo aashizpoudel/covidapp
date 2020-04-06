@@ -1,3 +1,5 @@
+
+import 'package:covidapp/News/news_list.dart';
 import 'package:covidapp/Screens/LiveUpdates.dart';
 import 'package:covidapp/Screens/Vram.dart';
 import 'package:covidapp/Screens/pages/rahat_form.dart';
@@ -21,6 +23,7 @@ class MyApp extends StatelessWidget {
           },
           '/symptom':(c)=>SymptomsForm(),
           '/rahat':(c)=>RahatForm(),
+          '/news':(c)=>NewsList(),
       },
       theme: ThemeData(
         primarySwatch: Colors.pink,
