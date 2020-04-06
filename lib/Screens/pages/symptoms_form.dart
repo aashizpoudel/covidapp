@@ -73,7 +73,7 @@ class _SymptomsFormState extends State<SymptomsForm> {
               dropBuottonList: [
                 DropdownMenuItem(value: Sex.male, child: Text('पुरुष')),
                 DropdownMenuItem(value: Sex.female, child: Text('महिला')),
-                DropdownMenuItem(value: Sex.gay, child: Text('अन्य')),
+                DropdownMenuItem(value: Sex.lgbt, child: Text('अन्य')),
               ],
               onDropDownChanged: (value) {
                 setState(() {
