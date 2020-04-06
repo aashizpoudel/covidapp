@@ -123,112 +123,116 @@ class SecondTab extends StatelessWidget {
               'कोरोना भाइरस बाट बच्ने उपाय',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            CarouselSlider(
-                autoPlay: true,
-                autoPlayInterval: Duration(seconds: 5),
-                viewportFraction: 1.0,
-                items: [
-                  Card(
-                    child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.60,
-                            child: Container(
-                                padding: EdgeInsets.all(8),
-                                child: Text(
-                                  "बेलाबेलामा साबुन-पानीले कम्तिमा २० सेकेन्ड मिचिमिचि हात धुने वा अल्कोहल भएको स्यानिटाइजर प्रयोग गर्ने ।",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500),
-                                )),
-                          ),
-                          Expanded(
-                              child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset(
-                              'images/sabun.png',
-                              fit: BoxFit.contain,
+            Container(
+              color: Colors.pink[100],
+              child: CarouselSlider(
+              
+                  autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 5),
+                  viewportFraction: 1.0,
+                  items: [
+                    Card(
+                      child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.60,
+                              child: Container(
+                                  padding: EdgeInsets.all(8),
+                                  child: Text(
+                                    "बेलाबेलामा साबुन-पानीले कम्तिमा २० सेकेन्ड मिचिमिचि हात धुने वा अल्कोहल भएको स्यानिटाइजर प्रयोग गर्ने ।",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500),
+                                  )),
                             ),
-                          )),
-                        ]),
-                  ),
-                  Card(
-                    child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                              child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset(
-                              'images/vidvad.png',
-                              fit: BoxFit.contain,
+                            Expanded(
+                                child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset(
+                                'images/sabun.png',
+                                fit: BoxFit.contain,
+                              ),
+                            )),
+                          ]),
+                    ),
+                    Card(
+                      child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                                child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset(
+                                'images/vidvad.png',
+                                fit: BoxFit.contain,
+                              ),
+                            )),
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.70,
+                              child: Container(
+                                  padding: EdgeInsets.all(8),
+                                  child: Text(
+                                    "भिडभाडमा नजाने र अरुलाई पनि नजाने सुझाव दिने, हात मिलाउनुको सट्टा नमस्कार गर्ने ।",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500),
+                                  )),
                             ),
-                          )),
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.70,
-                            child: Container(
-                                padding: EdgeInsets.all(8),
-                                child: Text(
-                                  "भिडभाडमा नजाने र अरुलाई पनि नजाने सुझाव दिने, हात मिलाउनुको सट्टा नमस्कार गर्ने ।",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500),
-                                )),
-                          ),
-                        ]),
-                  ),
-                  Card(
-                    child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.70,
-                            child: Container(
-                                padding: EdgeInsets.all(8),
-                                child: Text(
-                                  "खोक्दा वा हाछ्युँ गर्दा नाक मुख टिस्यू पेपर वा कुहिनाले छोप्ने र प्रयोग गरेको टिस्यू पेपरलाई बिर्को भएको फोहर फाल्ने भाँडोमा फाल्ने र साबुन-पानीले मिचिमिचि हात धुने वा अल्कोहल भएको स्यानिटाईजर प्रयोग गर्ने ।",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500),
-                                )),
-                          ),
-                          Expanded(
-                              child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset(
-                              'images/khokda.png',
-                              fit: BoxFit.contain,
+                          ]),
+                    ),
+                    Card(
+                      child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.70,
+                              child: Container(
+                                  padding: EdgeInsets.all(8),
+                                  child: Text(
+                                    "खोक्दा वा हाछ्युँ गर्दा नाक मुख टिस्यू पेपर वा कुहिनाले छोप्ने र प्रयोग गरेको टिस्यू पेपरलाई बिर्को भएको फोहर फाल्ने भाँडोमा फाल्ने र साबुन-पानीले मिचिमिचि हात धुने वा अल्कोहल भएको स्यानिटाईजर प्रयोग गर्ने ।",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500),
+                                  )),
                             ),
-                          )),
-                        ]),
-                  ),
-                  Card(
-                    child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                              child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset(
-                              'images/hospital.png',
-                              fit: BoxFit.contain,
+                            Expanded(
+                                child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset(
+                                'images/khokda.png',
+                                fit: BoxFit.contain,
+                              ),
+                            )),
+                          ]),
+                    ),
+                    Card(
+                      child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                                child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset(
+                                'images/hospital.png',
+                                fit: BoxFit.contain,
+                              ),
+                            )),
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.70,
+                              child: Container(
+                                  padding: EdgeInsets.all(8),
+                                  child: Text(
+                                    "कोरोना प्रभावित देशबाट आएको व्यक्त्तिहरूमा माथिका लक्षणहरू देखिए स्वास्थ्य केन्द्रमा तुरून्त जानुपर्दछ । घरैमा बस्दा परिवारका सदस्यहरूबाट १४ दिन सम्म छुट्टै आईसोलेसनमा बस्नु पर्दछ ।",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500),
+                                  )),
                             ),
-                          )),
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.70,
-                            child: Container(
-                                padding: EdgeInsets.all(8),
-                                child: Text(
-                                  "कोरोना प्रभावित देशबाट आएको व्यक्त्तिहरूमा माथिका लक्षणहरू देखिए स्वास्थ्य केन्द्रमा तुरून्त जानुपर्दछ । घरैमा बस्दा परिवारका सदस्यहरूबाट १४ दिन सम्म छुट्टै आईसोलेसनमा बस्नु पर्दछ ।",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500),
-                                )),
-                          ),
-                        ]),
-                  )
-                ])
+                          ]),
+                    )
+                  ]),
+            )
           ])
         ]);
   }

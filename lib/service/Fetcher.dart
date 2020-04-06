@@ -6,23 +6,31 @@ class Fetcher {
   BuildContext context;
   Fetcher({this.context});
   Future<List<Contact>> getContacts() async {
-    List<Contact> l =[];
+    List<Contact> l = [];
     String data =
         await DefaultAssetBundle.of(context).loadString("assets/contacts.json");
     final jsonResult = json.decode(data);
-    for(var d in jsonResult['data']){
+    for (var d in jsonResult['data']) {
       l.add(Contact.fromJSON(d));
     }
     return l;
   }
 
   Future readNagarpalika() async {
-    String data =
-        await DefaultAssetBundle.of(context).loadString("assets/nagarpalika.json");
+    String data = await DefaultAssetBundle.of(context)
+        .loadString("assets/nagarpalika.json");
     final jsonResult = json.decode(data);
-    
+
     return jsonResult;
   }
+
+  Future getWadaDetails(int wadaId) async {
+    String data = await DefaultAssetBundle.of(context)
+        .loadString("assets/nagarpalika.json");
+    final jsonResult = json.decode(data);
+    return jsonResult['wards-details']['${wadaId}'];
+  }
+
 }
 
 class Contact {

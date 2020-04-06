@@ -1,15 +1,14 @@
+import 'package:covidapp/Screens/pages/wada_details.dart';
 import 'package:covidapp/service/Fetcher.dart';
 import 'package:flutter/material.dart';
 
 class ThirdTab extends StatefulWidget {
-
-
   @override
   _ThirdTabState createState() => _ThirdTabState();
 }
 
 class _ThirdTabState extends State<ThirdTab> {
-  Color getColor(i){
+  Color getColor(i) {
     Color color;
     if (i % 2 == 0) {
       color = Colors.lime[200];
@@ -19,61 +18,78 @@ class _ThirdTabState extends State<ThirdTab> {
     return color;
   }
 
-Future nagarpalika;
+  Future nagarpalika;
   @override
   void initState() {
     super.initState();
-    nagarpalika = new Fetcher(context:context).readNagarpalika();
-
+    nagarpalika = new Fetcher(context: context).readNagarpalika();
+    
   }
+
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(future:nagarpalika,builder: (context,snapShot){
-      if(snapShot.hasData){
-        var ngr = snapShot.data;
-return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: <Widget>[
-          NameCard(
-            image: ngr['mayor']['image'],
-            name: ngr['mayor']['name'],
-            phNo: ngr['mayor']['contact'],
-            email: ngr['mayor']['email'],
-            post: ngr['mayor']['post'],
-            color: Colors.lime[200],
-          ),
-          NameCard(
-            image: ngr['vice-mayor']['image'],
-            name: ngr['vice-mayor']['name'],
-            phNo: ngr['vice-mayor']['contact'],
-            email: ngr['vice-mayor']['email'],
-            post: ngr['vice-mayor']['post'],
-            color: Colors.cyan[200],
-          ),
-          Expanded(
-            child: GridView.builder(
-                itemCount: ngr['wards'].length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4),
-                itemBuilder: (context, i) {
-                  return Card(
-                    color: getColor(i),
-                    elevation: 5,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[Text('वडा नं'), Text('${ngr['wards'][i]}')],
-                    ),
-                  );},
-                ),
-          ),]
-            ),
-          );
-      }
-          return Center(child: Text("loading..."),);
-
-    });
     
+    return FutureBuilder(
+        future: nagarpalika,
+        builder: (context, snapShot) {
+          if (snapShot.hasData) {
+            var ngr = snapShot.data;
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(children: <Widget>[
+              Text("बर्दघाट नगरपालीकाका जनप्रतिनिधीहरु"),
+
+              Container(
+                color:Colors.black12,
+                child: Column(
+                  children:[
+                      NameCard(
+                  image: ngr['mayor']['image'],
+                  name: ngr['mayor']['name'],
+                  phNo: ngr['mayor']['contact'],
+                  email: ngr['mayor']['email'],
+                  post: ngr['mayor']['post'],
+                ),
+                NameCard(
+                  image: ngr['vice-mayor']['image'],
+                  name: ngr['vice-mayor']['name'],
+                  phNo: ngr['vice-mayor']['contact'],
+                  email: ngr['vice-mayor']['email'],
+                  post: ngr['vice-mayor']['post'],
+                ),
+                  ]
+                ),
+              ),
+                Divider(),
+                Expanded(
+                  child:ListView.builder(
+                    itemCount: ngr['wards'].length,
+                    itemBuilder: (context, i) {
+                      return Container(
+                        margin: EdgeInsets.all(8.0),
+                        child: FlatButton(
+                          padding: EdgeInsets.all(9.0),
+                          onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (_){
+                              return WadaDetails(wadaId: ngr['wards'][i] );
+                            }));
+                          },
+                          color: getColor(i),
+                          child:
+                              Text('वडा नं ${ngr['wards'][i]} का प्रतिनिधिहरु'),
+                           
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ]),
+            );
+          }
+          return Center(
+            child: Text("loading..."),
+          );
+        });
   }
 }
 
@@ -102,11 +118,14 @@ class NameCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Expanded(
-              flex:1,
+                flex: 1,
                 child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(image!=null?image:'images/default.png',fit: BoxFit.contain,),
-            )),
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    image != null ? image : 'images/default.png',
+                    fit: BoxFit.contain,
+                  ),
+                )),
             SizedBox(
               width: 8,
             ),
@@ -120,7 +139,7 @@ class NameCard extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
                   Text('पद: $post'),
-                  if( email!=null) Text('ईमेल: $email'),
+                  if (email != null) Text('ईमेल: $email'),
                   Text('संपर्क: $phNo'),
                 ],
               ),

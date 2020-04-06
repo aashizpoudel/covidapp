@@ -23,7 +23,9 @@ class FirstTab extends StatelessWidget {
                 child: OutlineButton(
                   textColor: Colors.black,
                   borderSide: BorderSide(color: Colors.red),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed("/symptom");
+                  },
                   child: Text(
                       'यदि तपाइलाइ Covid-19 लागेको शंका लागेमा यहा क्लिक गर्नुहोस्।'),
                 ),
@@ -34,7 +36,7 @@ class FirstTab extends StatelessWidget {
                 },
                 color: Colors.pink,
                 child: Text(
-                  'के तपाईको आसपासमा कोही भोकै छन?',
+                  'आसपासमा कसैलाइ सहयोग चाहिएको छ भने यहा क्लिक गर्नुहोस्।',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -95,7 +97,7 @@ class FirstTab extends StatelessWidget {
           child: RaisedButton.icon(
             color: Color(0xffa40000),
             label: Text(
-              'राहत सहयोग',
+              'राहत सहयोग गर्न यहा क्लिक गर्नुहोस्',
               style: TextStyle(color: Colors.white),
             ),
             icon: Icon(

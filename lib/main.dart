@@ -1,5 +1,6 @@
 import 'package:covidapp/Screens/LiveUpdates.dart';
 import 'package:covidapp/Screens/Vram.dart';
+import 'package:covidapp/Screens/pages/symptoms_form.dart';
 import 'package:covidapp/homepage.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
           },
           "/vram": (_) {
             return Vram();
-          }
+          },
+          '/symptom':(c)=>SymptomsForm()
       },
       theme: ThemeData(
         primarySwatch: Colors.pink,

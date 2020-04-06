@@ -14,7 +14,10 @@ class CovidHome extends StatelessWidget {
           leading: SizedBox(width: 10,),
           title: Text('Covid-19 Bardaghat'),
          
-          bottom: TabBar(tabs: [
+       ),
+       bottomNavigationBar:  TabBar(
+         labelColor: Colors.pink,
+            tabs: [
             Tab(
               text: 'होम',
               icon: Icon(Icons.home),
@@ -32,7 +35,7 @@ class CovidHome extends StatelessWidget {
               icon: Icon(Icons.account_circle),
             ),
           ]),
-        ),
+        
         body: TabBarView(
           children: [FirstTab(), SecondTab(), ThirdTab(), FourthTab()],
         ),

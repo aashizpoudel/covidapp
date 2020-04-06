@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const headerStyle =
     TextStyle(color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 18);
-enum Sex { male, female, gay }
+enum Sex { male, female, lgbt }
 enum Temperature { below, normal, high }
 enum SelfQuarantine { yes, no }
 enum Cough { yes, no }
@@ -63,7 +63,7 @@ class _SymptomsFormState extends State<SymptomsForm> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(20.0),
         child: ListView(
           children: <Widget>[
             FormQuestions(

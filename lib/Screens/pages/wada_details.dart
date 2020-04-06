@@ -1,51 +1,55 @@
+import 'package:covidapp/Screens/third_tab.dart';
+import 'package:covidapp/service/Fetcher.dart';
 import 'package:flutter/material.dart';
 
-class WadaDetails extends StatelessWidget {
-  final Map<String, dynamic> wadaPeople;
+class WadaDetails extends StatefulWidget {
+  final int wadaId;
+  const WadaDetails({@required this.wadaId});
 
-  const WadaDetails({@required this.wadaPeople});
+  @override
+  _WadaDetailsState createState() => _WadaDetailsState();
+}
+
+class _WadaDetailsState extends State<WadaDetails> {
+  Future wadaPeople;
+
+  @override
+  void initState() {
+    super.initState();
+    wadaPeople = new Fetcher(context: context).getWadaDetails(widget.wadaId);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('वडा नं ${wadaPeople['wada no']}'),
-      ),
-      body: ListView.builder(
-          itemCount: wadaPeople['peoples'].length,
-          itemBuilder: (BuildContext context, int i) {
-            return
-             Card(
-              margin: EdgeInsets.all(10),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Image.asset('${wadaPeople['peoples'][i]['image']}'),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(flex:2,child: 
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                    'नाम: ${wadaPeople['peoples'][i]['name']}',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                  ),
-                  Text('पद:${wadaPeople['peoples'][i]['post']}'),
-                  Text('वडा नं ${wadaPeople['wada no']}'),
-                  Text('संपर्क: ${wadaPeople['peoples'][i]['contact']}'),
-                    ],
-                  )
-                  ),
-                ],
-              ),
-            );
-          }),
-    );
+        appBar: AppBar(
+          title: Text('वडा नं ${widget.wadaId}'),
+        ),
+        body: FutureBuilder(
+            future: wadaPeople,
+            builder: (context, snapShot) {
+              if (snapShot.hasData) {
+                return ListView.builder(
+                    itemCount: snapShot.data.length,
+                    itemBuilder: (BuildContext context, int i) {
+                      return Card(
+                        margin: EdgeInsets.all(10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: NameCard(
+                          name:snapShot.data[i]['name'],
+                          image:snapShot.data[i]['image'],
+                          phNo:snapShot.data[i]['contact'],
+                          post:snapShot.data[i]['post'],
+                        ),
+                      );
+                    });
+              }
+
+              return Center(
+                child: Text("loading..."),
+              );
+            }));
   }
 }
