@@ -1,18 +1,70 @@
+import 'package:covidapp/Screens/pages/wada_details.dart';
 import 'package:flutter/material.dart';
 
 class ThirdTab extends StatelessWidget {
-
-
-  Color getColor(i){
-    Color color;
-    if(i % 2 == 0){
-      color = Colors.lime[200];
-    }else
+  final List<Map<String, dynamic>> wadaDetail = [
     {
+      'wada no': '१',
+      'peoples': [
+        {
+          'name': 'बिनोद मानन्धर',
+          'post': 'नगरसभा सदस्य',
+          'image': 'images/ToDo.png',
+          'contact': '९८४२०४०९०९',
+        },
+        {
+          'name': 'बिनोद मानन्धर',
+          'post': 'नगरसभा सदस्य',
+          'image': 'images/ToDo.png',
+          'contact': '९८४२०४०९०९',
+        }
+      ]
+    },
+    {
+      'wada no': '२',
+      'peoples': [
+        {
+          'name': 'बिनोद मानन्धर',
+          'post': 'नगरसभा सदस्य',
+          'image': 'images/ToDo.png',
+          'contact': '९८४२०४०९०९',
+        },
+        {
+          'name': 'बिनोद मानन्धर',
+          'post': 'नगरसभा सदस्य',
+          'image': 'images/ToDo.png',
+          'contact': '९८४२०४०९०९',
+        }
+      ]
+    },
+    {
+      'wada no': '३',
+      'peoples': [
+        {
+          'name': 'बिनोद मानन्धर',
+          'post': 'नगरसभा सदस्य',
+          'image': 'images/ToDo.png',
+          'contact': '९८४२०४०९०९',
+        },
+        {
+          'name': 'बिनोद मानन्धर',
+          'post': 'नगरसभा सदस्य',
+          'image': 'images/ToDo.png',
+          'contact': '९८४२०४०९०९',
+        }
+      ]
+    },
+  ];
+  Color getColor(i) {
+    Color color;
+    if (i % 2 == 0) {
+      color = Colors.lime[200];
+    } else {
       color = Colors.cyan[200];
     }
     return color;
   }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -37,19 +89,30 @@ class ThirdTab extends StatelessWidget {
           ),
           Expanded(
             child: GridView.builder(
-                itemCount: 12,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4),
-                itemBuilder: (context, i) {
-                  return Card(
+              itemCount: wadaDetail.length,
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+              itemBuilder: (context, i) {
+                return GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => WadaDetails(
+                        wadaPeople: wadaDetail[i],
+                      ),
+                    ),
+                  ),
+                  child: Card(
                     color: getColor(i),
                     elevation: 5,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[Text('वडा नं'), Text('${i + 1}')],
+                      children: <Widget>[Text('वडा नं'), Text('${wadaDetail[i]['wada no']}')],
                     ),
-                  );
-                }),
+                  ),
+                );
+              },
+            ),
           )
         ],
       ),
