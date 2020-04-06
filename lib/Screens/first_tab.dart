@@ -12,48 +12,29 @@ class FirstTab extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text(
-                'नमस्ते!',
+                'नमस्कार',
                 style: TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text('आज तपाईको स्वास्थ्य कस्तो छ ?'),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  OutlineButton.icon(
-                    borderSide: BorderSide(color: Colors.green),
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.face,
-                      color: Colors.green,
-                    ),
-                    label: Text('संचई छ'),
-                  ),
-                  SizedBox(width: 10,),
-                  OutlineButton.icon(
-                    borderSide: BorderSide(color: Colors.red),
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SymptomsForm()));
-                    },
-                    icon: Icon(
-                      Icons.face,
-                      color: Colors.red,
-                    ),
-                    label: Text('संचई छैन'),
-                  ),
-                ],
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10),
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.circular(5),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: OutlineButton(
+                  textColor: Colors.black,
+                  borderSide: BorderSide(color: Colors.red),
+                  onPressed: () {},
+                  child: Text(
+                      'यदि तपाइलाइ Covid-19 लागेको शंका लागेमा यहा क्लिक गर्नुहोस्।'),
                 ),
+              ),
+              RaisedButton(
+                onPressed: (){
+
+                },
+                color: Colors.pink,
                 child: Text(
-                  'के तपाईको आसपासमा कोही भोकई छन?',
+                  'के तपाईको आसपासमा कोही भोकै छन?',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -63,82 +44,67 @@ class FirstTab extends StatelessWidget {
             ],
           ),
         ),
+        SizedBox(
+          height: 10,
+        ),
         Container(
-          padding: EdgeInsets.all(10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: Wrap(
+            spacing: 5.0,
             children: <Widget>[
               Row(
                 children: <Widget>[
+                  Expanded(child: MiddleCard(onTap: (){
+                    DefaultTabController.of(context).animateTo(1);
+                  }, icon:Icons.nature_people, titleLabel: "कोभिड -१९ बारे",bodyLabel: "के हो कोभिड -१९?",)),
+                  Expanded(child: MiddleCard(onTap: (){
+                    Navigator.of(context).pushNamed("/vram");
+                  }, icon:Icons.nature_people, titleLabel: "कोभिड - १९ बारे भ्रमहरु",bodyLabel: "भ्रम र यथार्थ")),
+                ],
+              ),
+              Row(
+                children: <Widget>[
                   Expanded(
-                    child: MiddleCard(
-                      titleLabel: 'BPKIHS Help Line',
-                      bodyLabel:
-                          'वी.पी.कोइराला स्वास्थ बिज्ञान प्रतिसठन हेल्प लाइन',
-                      icon: Icons.local_hospital,
+                    child: MiddleCard(onTap: (){},
+                      titleLabel: 'समाचार',
+                      bodyLabel: 'Covid-19 बारे समाचार',
+                      icon: Icons.poll,
                     ),
                   ),
                   Expanded(
-                    child: MiddleCard(
+                    child: MiddleCard(onTap: (){
+                      Navigator.pushNamed(context,"/liveupdates");
+                    },
                       titleLabel: 'Live Updates',
-                      bodyLabel:
-                          'वी.पी.कोइराला स्वास्थ बिज्ञान प्रतिसठन हेल्प लाइन',
+                      bodyLabel: 'Covid-19 बारे Updates',
                       icon: Icons.update,
                     ),
                   )
                 ],
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                'लक्षणहरु',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                  'यस्ता लक्षणहरु देखा परेमा नजीकको तोकिएको स्वास्थ्य केन्द्रमा संपर्क गर्नुहोस।'),
-              Divider(),
-              Text(
-                'प्राय: सोधिने प्रश्नहरु',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              ),
-              Container(
-                height: 100,
-              ),
-              Divider(),
-              Text(
-                'भ्रम र यथार्थ',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              ),
-              Text('कोरोना भाईरस स्वासप्रस्वासको माध्यमबाट सरने रोग हो ।'),
-              Center(
-                child: OutlineButton(
-                  borderSide: BorderSide(color: Theme.of(context).accentColor),
-                  onPressed: () {},
-                  child: Text(
-                    'थप जानकारी ',
-                    style: TextStyle(color: Theme.of(context).accentColor),
-                  ),
-                ),
-              ),
-              Divider(),
-              Center(
-                child: RaisedButton.icon(
-                  color: Color(0xffa40000),
-                  label: Text(
-                    'राहत सहयोग',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  icon: Icon(
-                    Icons.supervisor_account,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {},
-                ),
-              )
+             
             ],
           ),
-        )
+        ),
+        Center(
+          child:MiddleCard(icon: Icons.local_hospital, titleLabel: "चिसापानी अस्पताल हटलाइन", bodyLabel:"9860048078", onTap: (){
+
+          })
+        ),
+        Center(
+          child: RaisedButton.icon(
+            color: Color(0xffa40000),
+            label: Text(
+              'राहत सहयोग',
+              style: TextStyle(color: Colors.white),
+            ),
+            icon: Icon(
+              Icons.supervisor_account,
+              color: Colors.white,
+            ),
+            onPressed: () {},
+          ),
+        ),
       ],
     );
   }

@@ -1,3 +1,5 @@
+import 'package:covidapp/Screens/LiveUpdates.dart';
+import 'package:covidapp/Screens/Vram.dart';
 import 'package:covidapp/homepage.dart';
 import 'package:flutter/material.dart';
 
@@ -8,9 +10,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'COVID-19',
+      routes: {
+          "/liveupdates": (_) {
+            return LiveUpdateScreen();
+          },
+          "/vram": (_) {
+            return Vram();
+          }
+      },
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Cambay'
+        primarySwatch: Colors.pink,
+        fontFamily: 'Mukta'
       ),
       home: CovidHome(),
     );

@@ -1,0 +1,160 @@
+{
+    "mayor": {
+        "name": "धिरज बस्याल",
+        "post": "नगर प्रमुख",
+        "contact": "987654321"
+    },
+    "vice-mayor": {
+        "name": "मायादेवी पाैडेल",
+        "post": "नगर उप-प्रमुख",
+        "contact": "987654321"
+    },
+    "wards": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+    ],
+    "wards-details": {
+        "1": [
+            {
+                "name": "मायादेवी पाैडेल",
+                "post": "नगर उप-प्रमुख",
+                "contact": "987654321",
+                "email": "deputymayor@bardaghatmun.gov.np"
+            }
+        ],
+        "2": [
+            {
+                "name": "मायादेवी पाैडेल",
+                "post": "नगर उप-प्रमुख",
+                "contact": "987654321",
+                "email": "deputymayor@bardaghatmun.gov.np"
+            }
+        ],
+        "3": [
+            {
+                "name": "मायादेवी पाैडेल",
+                "post": "नगर उप-प्रमुख",
+                "contact": "987654321",
+                "email": "deputymayor@bardaghatmun.gov.np"
+            }
+        ],
+        "4": [
+            {
+                "name": "मायादेवी पाैडेल",
+                "post": "नगर उप-प्रमुख",
+                "contact": "987654321",
+                "email": "deputymayor@bardaghatmun.gov.np"
+            }
+        ],
+        "5": [
+            {
+                "name": "मायादेवी पाैडेल",
+                "post": "नगर उप-प्रमुख",
+                "contact": "987654321",
+                "email": "deputymayor@bardaghatmun.gov.np"
+            }
+        ],
+        "6": [
+            {
+                "name": "मायादेवी पाैडेल",
+                "post": "नगर उप-प्रमुख",
+                "contact": "987654321",
+                "email": "deputymayor@bardaghatmun.gov.np"
+            }
+        ],
+        "7": [
+            {
+                "name": "मायादेवी पाैडेल",
+                "post": "नगर उप-प्रमुख",
+                "contact": "987654321",
+                "email": "deputymayor@bardaghatmun.gov.np"
+            }
+        ],
+        "8": [
+            {
+                "name": "मायादेवी पाैडेल",
+                "post": "नगर उप-प्रमुख",
+                "contact": "987654321",
+                "email": "deputymayor@bardaghatmun.gov.np"
+            }
+        ],
+        "9": [
+            {
+                "name": "मायादेवी पाैडेल",
+                "post": "नगर उप-प्रमुख",
+                "contact": "987654321",
+                "email": "deputymayor@bardaghatmun.gov.np"
+            }
+        ],
+        "10": [
+            {
+                "name": "मायादेवी पाैडेल",
+                "post": "नगर उप-प्रमुख",
+                "contact": "987654321",
+                "email": "deputymayor@bardaghatmun.gov.np"
+            }
+        ],
+        "11": [
+            {
+                "name": "मायादेवी पाैडेल",
+                "post": "नगर उप-प्रमुख",
+                "contact": "987654321",
+                "email": "deputymayor@bardaghatmun.gov.np"
+            }
+        ],
+        "12": [
+            {
+                "name": "मायादेवी पाैडेल",
+                "post": "नगर उप-प्रमुख",
+                "contact": "987654321",
+                "email": "deputymayor@bardaghatmun.gov.np"
+            }
+        ],
+        "13": [
+            {
+                "name": "मायादेवी पाैडेल",
+                "post": "नगर उप-प्रमुख",
+                "contact": "987654321",
+                "email": "deputymayor@bardaghatmun.gov.np"
+            }
+        ],
+        "14": [
+            {
+                "name": "मायादेवी पाैडेल",
+                "post": "नगर उप-प्रमुख",
+                "contact": "987654321",
+                "email": "deputymayor@bardaghatmun.gov.np"
+            }
+        ],
+        "15": [
+            {
+                "name": "मायादेवी पाैडेल",
+                "post": "नगर उप-प्रमुख",
+                "contact": "987654321",
+                "email": "deputymayor@bardaghatmun.gov.np"
+            }
+        ],
+        "16": [
+            {
+                "name": "मायादेवी पाैडेल",
+                "post": "नगर उप-प्रमुख",
+                "contact": "987654321",
+                "email": "deputymayor@bardaghatmun.gov.np"
+            }
+        ]
+    }
+}

@@ -1,61 +1,15 @@
-import 'package:covidapp/Screens/pages/wada_details.dart';
+import 'package:covidapp/service/Fetcher.dart';
 import 'package:flutter/material.dart';
 
-class ThirdTab extends StatelessWidget {
-  final List<Map<String, dynamic>> wadaDetail = [
-    {
-      'wada no': '१',
-      'peoples': [
-        {
-          'name': 'बिनोद मानन्धर',
-          'post': 'नगरसभा सदस्य',
-          'image': 'images/ToDo.png',
-          'contact': '९८४२०४०९०९',
-        },
-        {
-          'name': 'बिनोद मानन्धर',
-          'post': 'नगरसभा सदस्य',
-          'image': 'images/ToDo.png',
-          'contact': '९८४२०४०९०९',
-        }
-      ]
-    },
-    {
-      'wada no': '२',
-      'peoples': [
-        {
-          'name': 'बिनोद मानन्धर',
-          'post': 'नगरसभा सदस्य',
-          'image': 'images/ToDo.png',
-          'contact': '९८४२०४०९०९',
-        },
-        {
-          'name': 'बिनोद मानन्धर',
-          'post': 'नगरसभा सदस्य',
-          'image': 'images/ToDo.png',
-          'contact': '९८४२०४०९०९',
-        }
-      ]
-    },
-    {
-      'wada no': '३',
-      'peoples': [
-        {
-          'name': 'बिनोद मानन्धर',
-          'post': 'नगरसभा सदस्य',
-          'image': 'images/ToDo.png',
-          'contact': '९८४२०४०९०९',
-        },
-        {
-          'name': 'बिनोद मानन्धर',
-          'post': 'नगरसभा सदस्य',
-          'image': 'images/ToDo.png',
-          'contact': '९८४२०४०९०९',
-        }
-      ]
-    },
-  ];
-  Color getColor(i) {
+class ThirdTab extends StatefulWidget {
+
+
+  @override
+  _ThirdTabState createState() => _ThirdTabState();
+}
+
+class _ThirdTabState extends State<ThirdTab> {
+  Color getColor(i){
     Color color;
     if (i % 2 == 0) {
       color = Colors.lime[200];
@@ -65,58 +19,61 @@ class ThirdTab extends StatelessWidget {
     return color;
   }
 
+Future nagarpalika;
+  @override
+  void initState() {
+    super.initState();
+    nagarpalika = new Fetcher(context:context).readNagarpalika();
+
+  }
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return FutureBuilder(future:nagarpalika,builder: (context,snapShot){
+      if(snapShot.hasData){
+        var ngr = snapShot.data;
+return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: <Widget>[
           NameCard(
-            image: 'images/ToDo.png',
-            name: 'तिलक राई',
-            phNo: '९८५२०४५६००',
-            email: 'mayor@dharan.gov.np',
-            post: 'नगर प्रमुख',
+            image: ngr['mayor']['image'],
+            name: ngr['mayor']['name'],
+            phNo: ngr['mayor']['contact'],
+            email: ngr['mayor']['email'],
+            post: ngr['mayor']['post'],
             color: Colors.lime[200],
           ),
           NameCard(
-            image: 'images/ToDo.png',
-            name: 'मंजु भण्डारी (सुबेदी)',
-            phNo: '९८५२०३८६००',
-            email: 'deputymayor@dharan.gov.np',
-            post: 'नगर उप-प्रमुख',
+            image: ngr['vice-mayor']['image'],
+            name: ngr['vice-mayor']['name'],
+            phNo: ngr['vice-mayor']['contact'],
+            email: ngr['vice-mayor']['email'],
+            post: ngr['vice-mayor']['post'],
             color: Colors.cyan[200],
           ),
           Expanded(
             child: GridView.builder(
-              itemCount: wadaDetail.length,
-              gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
-              itemBuilder: (context, i) {
-                return GestureDetector(
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => WadaDetails(
-                        wadaPeople: wadaDetail[i],
-                      ),
-                    ),
-                  ),
-                  child: Card(
+                itemCount: ngr['wards'].length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4),
+                itemBuilder: (context, i) {
+                  return Card(
                     color: getColor(i),
                     elevation: 5,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[Text('वडा नं'), Text('${wadaDetail[i]['wada no']}')],
+                      children: <Widget>[Text('वडा नं'), Text('${ngr['wards'][i]}')],
                     ),
-                  ),
-                );
-              },
+                  );},
+                ),
+          ),]
             ),
-          )
-        ],
-      ),
-    );
+          );
+      }
+          return Center(child: Text("loading..."),);
+
+    });
+    
   }
 }
 
@@ -130,29 +87,31 @@ class NameCard extends StatelessWidget {
 
   const NameCard(
       {this.image, this.name, this.post, this.email, this.phNo, this.color});
+
   @override
   Widget build(BuildContext context) {
     return Card(
       color: color,
-      elevation: 5,
+      elevation: 2,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(0),
       ),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Expanded(
+              flex:1,
                 child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.asset(image),
+              child: Image.asset(image!=null?image:'images/default.png',fit: BoxFit.contain,),
             )),
             SizedBox(
-              width: 10,
+              width: 8,
             ),
             Expanded(
-              flex: 2,
+              flex: 4,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -161,7 +120,7 @@ class NameCard extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
                   Text('पद: $post'),
-                  Text('ईमेल: $email'),
+                  if( email!=null) Text('ईमेल: $email'),
                   Text('संपर्क: $phNo'),
                 ],
               ),
