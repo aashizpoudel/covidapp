@@ -1,4 +1,5 @@
 import 'package:covidapp/Screens/components/middle_card.dart';
+import 'package:covidapp/Screens/pages/symptoms_form.dart';
 import 'package:flutter/material.dart';
 
 class FirstTab extends StatelessWidget {
@@ -33,7 +34,9 @@ class FirstTab extends StatelessWidget {
                   SizedBox(width: 10,),
                   OutlineButton.icon(
                     borderSide: BorderSide(color: Colors.red),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SymptomsForm()));
+                    },
                     icon: Icon(
                       Icons.face,
                       color: Colors.red,
