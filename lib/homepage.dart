@@ -10,9 +10,9 @@ class CovidHome extends StatelessWidget {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        drawer: Drawer(),
         appBar: AppBar(
-          title: Text('COVID-19 Dharan'),
+          leading: SizedBox(width: 10,),
+          title: Text('Covid-19 Bardaghat'),
           actions: <Widget>[
             Padding(
               padding: const EdgeInsets.only(right: 20),
@@ -28,7 +28,7 @@ class CovidHome extends StatelessWidget {
               icon: Icon(Icons.home),
             ),
             Tab(
-              text: 'बचने तरीका',
+              text: 'कोभिड-१९',
               icon: Icon(Icons.pageview),
             ),
             Tab(
@@ -36,8 +36,8 @@ class CovidHome extends StatelessWidget {
               icon: Icon(Icons.people),
             ),
             Tab(
-              text: 'रासन पानी',
-              icon: Icon(Icons.fastfood),
+              text: 'अन्य सम्पर्क',
+              icon: Icon(Icons.account_circle),
             ),
           ]),
         ),

@@ -11,36 +11,20 @@ class FirstTab extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text(
-                'नमस्ते!',
+                'नमस्कार',
                 style: TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text('आज तपाईको स्वास्थ्य कस्तो छ ?'),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  OutlineButton.icon(
-                    borderSide: BorderSide(color: Colors.green),
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.face,
-                      color: Colors.green,
-                    ),
-                    label: Text('संचई छ'),
-                  ),
-                  SizedBox(width: 10,),
-                  OutlineButton.icon(
-                    borderSide: BorderSide(color: Colors.red),
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.face,
-                      color: Colors.red,
-                    ),
-                    label: Text('संचई छैन'),
-                  ),
-                ],
+              OutlineButton(
+                textColor: Colors.black,
+                borderSide: BorderSide(color: Colors.red),
+                onPressed: (){
+
+                },
+                child: Text(
+                    'यदि तपाइलाइ Covid-19 लागेको शका लागेमा यहा क्लिक गर्नुहोस्।'),
               ),
               Container(
                 margin: EdgeInsets.symmetric(vertical: 10),
@@ -50,7 +34,7 @@ class FirstTab extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Text(
-                  'के तपाईको आसपासमा कोही भोकई छन?',
+                  'के तपाईको आसपासमा कोही भोकै छन?',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -60,8 +44,11 @@ class FirstTab extends StatelessWidget {
             ],
           ),
         ),
+        SizedBox(
+          height: 10,
+        ),
         Container(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -69,17 +56,15 @@ class FirstTab extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                     child: MiddleCard(
-                      titleLabel: 'BPKIHS Help Line',
-                      bodyLabel:
-                          'वी.पी.कोइराला स्वास्थ बिज्ञान प्रतिसठन हेल्प लाइन',
+                      titleLabel: 'Chisapani Hospital',
+                      bodyLabel: 'चिसापानी अस्पताल हेल्प लाइन',
                       icon: Icons.local_hospital,
                     ),
                   ),
                   Expanded(
                     child: MiddleCard(
                       titleLabel: 'Live Updates',
-                      bodyLabel:
-                          'वी.पी.कोइराला स्वास्थ बिज्ञान प्रतिसठन हेल्प लाइन',
+                      bodyLabel: 'Covid-19 बारे Updates',
                       icon: Icons.update,
                     ),
                   )
@@ -89,35 +74,101 @@ class FirstTab extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                'लक्षणहरु',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                  'यस्ता लक्षणहरु देखा परेमा नजीकको तोकिएको स्वास्थ्य केन्द्रमा संपर्क गर्नुहोस।'),
-              Divider(),
-              Text(
-                'प्राय: सोधिने प्रश्नहरु',
+                'Covid-19 का लक्षणहरु',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               Container(
-                height: 100,
+                height: 190,
+                child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      Container(
+                        width: 150,
+                        child: Card(
+                            child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Wrap(children: [
+                            Image.asset("images/jworo.png"),
+                            Center(
+                              child: Text(
+                                "ज्वरो आउनु",
+                                style: TextStyle(fontSize: 15),
+                              ),
+                            )
+                          ]),
+                        )),
+                      ),
+                      Container(
+                        width: 150,
+                        child: Card(
+                            child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Wrap(children: [
+                            Image.asset("images/khoki.png"),
+                            Center(
+                              child: Text(
+                                "सुक्खा खोकी लाग्नु",
+                                style: TextStyle(fontSize: 15),
+                              ),
+                            )
+                          ]),
+                        )),
+                      ),
+                      Container(
+                        width: 150,
+                        child: Card(
+                            child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Wrap(children: [
+                            Image.asset("images/swas.png"),
+                            Center(
+                              child: Text(
+                                "स्वास प्रस्वासमा समस्या",
+                                style: TextStyle(fontSize: 13),
+                              ),
+                            )
+                          ]),
+                        )),
+                      ),
+                      Container(
+                        width: 150,
+                        child: Card(
+                            child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Wrap(children: [
+                            Image.asset("images/tauko.png"),
+                            Center(
+                              child: Text(
+                                "टाउको दुख्ने",
+                                style: TextStyle(fontSize: 15),
+                              ),
+                            )
+                          ]),
+                        )),
+                      ),
+                      Container(
+                        width: 150,
+                        child: Card(
+                            child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Wrap(children: [
+                            Image.asset("images/ghaati.png"),
+                            Center(
+                              child: Text(
+                                "घाटी दुख्ने",
+                                style: TextStyle(fontSize: 15),
+                              ),
+                            )
+                          ]),
+                        )),
+                      ),
+                    ]),
               ),
-              Divider(),
+              SizedBox(
+                height: 10,
+              ),
               Text(
-                'भ्रम र यथार्थ',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              ),
-              Text('कोरोना भाईरस स्वासप्रस्वासको माध्यमबाट सरने रोग हो ।'),
-              Center(
-                child: OutlineButton(
-                  borderSide: BorderSide(color: Theme.of(context).accentColor),
-                  onPressed: () {},
-                  child: Text(
-                    'थप जानकारी ',
-                    style: TextStyle(color: Theme.of(context).accentColor),
-                  ),
-                ),
-              ),
+                  'यस्ता लक्षणहरु देखा परेमा नजीकको तोकिएको स्वास्थ्य केन्द्रमा तुरुन्त संपर्क गर्नुहोस।'),
               Divider(),
               Center(
                 child: RaisedButton.icon(

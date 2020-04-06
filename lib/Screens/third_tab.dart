@@ -20,7 +20,7 @@ class ThirdTab extends StatelessWidget {
       child: Column(
         children: <Widget>[
           NameCard(
-            image: 'images/ToDo.png',
+            image: 'images/default.png',
             name: 'तिलक राई',
             phNo: '९८५२०४५६००',
             email: 'mayor@dharan.gov.np',
@@ -28,7 +28,7 @@ class ThirdTab extends StatelessWidget {
             color: Colors.lime[200],
           ),
           NameCard(
-            image: 'images/ToDo.png',
+            image: 'images/default.png',
             name: 'मंजु भण्डारी (सुबेदी)',
             phNo: '९८५२०३८६००',
             email: 'deputymayor@dharan.gov.np',
@@ -67,6 +67,7 @@ class NameCard extends StatelessWidget {
 
   const NameCard(
       {this.image, this.name, this.post, this.email, this.phNo, this.color});
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -83,7 +84,7 @@ class NameCard extends StatelessWidget {
             Expanded(
                 child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.asset(image),
+              child: Image.asset(image!=null?image:'images/default.png'),
             )),
             SizedBox(
               width: 10,
@@ -98,7 +99,7 @@ class NameCard extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
                   Text('पद: $post'),
-                  Text('ईमेल: $email'),
+                  if( email!=null) Text('ईमेल: $email'),
                   Text('संपर्क: $phNo'),
                 ],
               ),
