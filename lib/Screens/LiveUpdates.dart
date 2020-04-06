@@ -10,12 +10,10 @@ class LiveUpdateScreen extends StatefulWidget {
 }
 
 class _LiveUpdateScreenState extends State<LiveUpdateScreen> {
-  WebViewController _controller;
   bool loading= true;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     loading=true;
   }
@@ -27,7 +25,6 @@ class _LiveUpdateScreenState extends State<LiveUpdateScreen> {
           children: [WebView(
           initialUrl: 'http://corona.rabimsoft.com',
           onWebViewCreated: (WebViewController webViewController) async {
-            _controller = webViewController;
             // await loadHtmlFromAssets('assets/liveupdate.html', _controller);
             // _controller.loadUrl("http://google.com");
           },onPageFinished: (s){

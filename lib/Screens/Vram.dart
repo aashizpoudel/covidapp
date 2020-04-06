@@ -15,7 +15,6 @@ class _VramState extends State<Vram> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     loading=true;
   }

@@ -28,7 +28,7 @@ class Fetcher {
     String data = await DefaultAssetBundle.of(context)
         .loadString("assets/nagarpalika.json");
     final jsonResult = json.decode(data);
-    return jsonResult['wards-details']['${wadaId}'];
+    return jsonResult['wards-details']['$wadaId'];
   }
 
 }

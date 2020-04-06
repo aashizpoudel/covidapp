@@ -1,5 +1,4 @@
 import 'package:covidapp/Screens/components/middle_card.dart';
-import 'package:covidapp/Screens/pages/symptoms_form.dart';
 import 'package:flutter/material.dart';
 
 class FirstTab extends StatelessWidget {

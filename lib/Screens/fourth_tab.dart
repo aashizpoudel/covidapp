@@ -36,7 +36,7 @@ class _FourthTabState extends State<FourthTab> {
                   Expanded(
                     child: ListView(children: fetchItems(snapShot.data)),
                   )
-                  else 
+                else
                   Text("No items available")
               ],
             ),
@@ -49,7 +49,7 @@ class _FourthTabState extends State<FourthTab> {
     if (contacts.length == 0) {
       l.add(Text("No contacts available"));
     }
-    int i=0;
+    int i = 0;
     for (var item in contacts) {
       i++;
       l.add(NameCard(
@@ -60,19 +60,18 @@ class _FourthTabState extends State<FourthTab> {
         color: getColor(i),
       ));
     }
-    ;
+
     print(l);
     return l;
   }
 
-   Color getColor(i){
+  Color getColor(i) {
     Color color;
-    if(i % 2 == 0){
+    if (i % 2 == 0) {
       color = Colors.blueGrey[100];
-    }else
-    {
+    } else {
       color = Colors.grey[100];
     }
     return color;
-   }
+  }
 }
