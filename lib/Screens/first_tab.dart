@@ -17,22 +17,21 @@ class FirstTab extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              OutlineButton(
-                textColor: Colors.black,
-                borderSide: BorderSide(color: Colors.red),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: OutlineButton(
+                  textColor: Colors.black,
+                  borderSide: BorderSide(color: Colors.red),
+                  onPressed: () {},
+                  child: Text(
+                      'यदि तपाइलाइ Covid-19 लागेको शंका लागेमा यहा क्लिक गर्नुहोस्।'),
+                ),
+              ),
+              RaisedButton(
                 onPressed: (){
 
                 },
-                child: Text(
-                    'यदि तपाइलाइ Covid-19 लागेको शका लागेमा यहा क्लिक गर्नुहोस्।'),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10),
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.circular(5),
-                ),
+                color: Colors.pink,
                 child: Text(
                   'के तपाईको आसपासमा कोही भोकै छन?',
                   style: TextStyle(color: Colors.white),
@@ -49,20 +48,32 @@ class FirstTab extends StatelessWidget {
         ),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Wrap(
+            spacing: 5.0,
             children: <Widget>[
               Row(
                 children: <Widget>[
+                  Expanded(child: MiddleCard(onTap: (){
+                    DefaultTabController.of(context).animateTo(1);
+                  }, icon:Icons.nature_people, titleLabel: "कोभिड -१९ बारे",bodyLabel: "के हो कोभिड -१९?",)),
+                  Expanded(child: MiddleCard(onTap: (){
+                    Navigator.of(context).pushNamed("/vram");
+                  }, icon:Icons.nature_people, titleLabel: "कोभिड - १९ बारे भ्रमहरु",bodyLabel: "भ्रम र यथार्थ")),
+                ],
+              ),
+              Row(
+                children: <Widget>[
                   Expanded(
-                    child: MiddleCard(
-                      titleLabel: 'Chisapani Hospital',
-                      bodyLabel: 'चिसापानी अस्पताल हेल्प लाइन',
-                      icon: Icons.local_hospital,
+                    child: MiddleCard(onTap: (){},
+                      titleLabel: 'समाचार',
+                      bodyLabel: 'Covid-19 बारे समाचार',
+                      icon: Icons.poll,
                     ),
                   ),
                   Expanded(
-                    child: MiddleCard(
+                    child: MiddleCard(onTap: (){
+                      Navigator.pushNamed(context,"/liveupdates");
+                    },
                       titleLabel: 'Live Updates',
                       bodyLabel: 'Covid-19 बारे Updates',
                       icon: Icons.update,
@@ -70,123 +81,29 @@ class FirstTab extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                'Covid-19 का लक्षणहरु',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              ),
-              Container(
-                height: 190,
-                child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      Container(
-                        width: 150,
-                        child: Card(
-                            child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Wrap(children: [
-                            Image.asset("images/jworo.png"),
-                            Center(
-                              child: Text(
-                                "ज्वरो आउनु",
-                                style: TextStyle(fontSize: 15),
-                              ),
-                            )
-                          ]),
-                        )),
-                      ),
-                      Container(
-                        width: 150,
-                        child: Card(
-                            child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Wrap(children: [
-                            Image.asset("images/khoki.png"),
-                            Center(
-                              child: Text(
-                                "सुक्खा खोकी लाग्नु",
-                                style: TextStyle(fontSize: 15),
-                              ),
-                            )
-                          ]),
-                        )),
-                      ),
-                      Container(
-                        width: 150,
-                        child: Card(
-                            child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Wrap(children: [
-                            Image.asset("images/swas.png"),
-                            Center(
-                              child: Text(
-                                "स्वास प्रस्वासमा समस्या",
-                                style: TextStyle(fontSize: 13),
-                              ),
-                            )
-                          ]),
-                        )),
-                      ),
-                      Container(
-                        width: 150,
-                        child: Card(
-                            child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Wrap(children: [
-                            Image.asset("images/tauko.png"),
-                            Center(
-                              child: Text(
-                                "टाउको दुख्ने",
-                                style: TextStyle(fontSize: 15),
-                              ),
-                            )
-                          ]),
-                        )),
-                      ),
-                      Container(
-                        width: 150,
-                        child: Card(
-                            child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Wrap(children: [
-                            Image.asset("images/ghaati.png"),
-                            Center(
-                              child: Text(
-                                "घाटी दुख्ने",
-                                style: TextStyle(fontSize: 15),
-                              ),
-                            )
-                          ]),
-                        )),
-                      ),
-                    ]),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                  'यस्ता लक्षणहरु देखा परेमा नजीकको तोकिएको स्वास्थ्य केन्द्रमा तुरुन्त संपर्क गर्नुहोस।'),
-              Divider(),
-              Center(
-                child: RaisedButton.icon(
-                  color: Color(0xffa40000),
-                  label: Text(
-                    'राहत सहयोग',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  icon: Icon(
-                    Icons.supervisor_account,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {},
-                ),
-              )
+             
             ],
           ),
-        )
+        ),
+        Center(
+          child:MiddleCard(icon: Icons.local_hospital, titleLabel: "चिसापानी अस्पताल हटलाइन", bodyLabel:"9860048078", onTap: (){
+
+          })
+        ),
+        Center(
+          child: RaisedButton.icon(
+            color: Color(0xffa40000),
+            label: Text(
+              'राहत सहयोग',
+              style: TextStyle(color: Colors.white),
+            ),
+            icon: Icon(
+              Icons.supervisor_account,
+              color: Colors.white,
+            ),
+            onPressed: () {},
+          ),
+        ),
       ],
     );
   }

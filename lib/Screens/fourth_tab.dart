@@ -49,17 +49,30 @@ class _FourthTabState extends State<FourthTab> {
     if (contacts.length == 0) {
       l.add(Text("No contacts available"));
     }
-
+    int i=0;
     for (var item in contacts) {
+      i++;
       l.add(NameCard(
         name: item.name,
         post: item.post,
         image: item.image,
         phNo: item.contact,
+        color: getColor(i),
       ));
     }
     ;
     print(l);
     return l;
   }
+
+   Color getColor(i){
+    Color color;
+    if(i % 2 == 0){
+      color = Colors.blueGrey[100];
+    }else
+    {
+      color = Colors.grey[100];
+    }
+    return color;
+   }
 }

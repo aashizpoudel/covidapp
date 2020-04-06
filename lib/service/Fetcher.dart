@@ -15,6 +15,14 @@ class Fetcher {
     }
     return l;
   }
+
+  Future readNagarpalika() async {
+    String data =
+        await DefaultAssetBundle.of(context).loadString("assets/nagarpalika.json");
+    final jsonResult = json.decode(data);
+    
+    return jsonResult;
+  }
 }
 
 class Contact {

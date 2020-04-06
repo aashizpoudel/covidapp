@@ -13,15 +13,7 @@ class CovidHome extends StatelessWidget {
         appBar: AppBar(
           leading: SizedBox(width: 10,),
           title: Text('Covid-19 Bardaghat'),
-          actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: CircleAvatar(
-                backgroundColor: Colors.amber,
-                radius: 20,
-              ),
-            )
-          ],
+         
           bottom: TabBar(tabs: [
             Tab(
               text: 'होम',

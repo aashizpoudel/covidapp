@@ -18,8 +18,7 @@ environment:
 
 dependencies:
   carousel_slider: ^1.3.0
-  connectivity:
-  http:
+  webview_flutter:
   flutter:
     sdk: flutter
 
@@ -53,6 +52,12 @@ flutter:
    - images/khoki.png
    - assets/contacts.json
    - assets/nagarpalika.json
+   - images/sabun.png
+   - images/khokda.png
+   - images/hospital.png
+   - images/vidvad.png
+   - assets/liveupdate.html
+   - assets/vram.html
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -71,6 +76,15 @@ flutter:
       fonts:
         - asset: fonts/Cambay-Regular.ttf
         - asset: fonts/Cambay-Bold.ttf
+    - family: Mukta
+      fonts:
+        - asset: fonts/Mukta-Bold.ttf
+        - asset: fonts/Mukta-ExtraBold.ttf
+        - asset: fonts/Mukta-ExtraLight.ttf
+        - asset: fonts/Mukta-Light.ttf
+        - asset: fonts/Mukta-Medium.ttf
+        - asset: fonts/Mukta-Regular.ttf
+        - asset: fonts/Mukta-SemiBold.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

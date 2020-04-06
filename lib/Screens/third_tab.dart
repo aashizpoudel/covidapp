@@ -1,8 +1,14 @@
+import 'package:covidapp/service/Fetcher.dart';
 import 'package:flutter/material.dart';
 
-class ThirdTab extends StatelessWidget {
+class ThirdTab extends StatefulWidget {
 
 
+  @override
+  _ThirdTabState createState() => _ThirdTabState();
+}
+
+class _ThirdTabState extends State<ThirdTab> {
   Color getColor(i){
     Color color;
     if(i % 2 == 0){
@@ -13,31 +19,42 @@ class ThirdTab extends StatelessWidget {
     }
     return color;
   }
+
+Future nagarpalika;
+  @override
+  void initState() {
+    super.initState();
+    nagarpalika = new Fetcher(context:context).readNagarpalika();
+
+  }
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return FutureBuilder(future:nagarpalika,builder: (context,snapShot){
+      if(snapShot.hasData){
+        var ngr = snapShot.data;
+return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: <Widget>[
           NameCard(
-            image: 'images/default.png',
-            name: 'तिलक राई',
-            phNo: '९८५२०४५६००',
-            email: 'mayor@dharan.gov.np',
-            post: 'नगर प्रमुख',
+            image: ngr['mayor']['image'],
+            name: ngr['mayor']['name'],
+            phNo: ngr['mayor']['contact'],
+            email: ngr['mayor']['email'],
+            post: ngr['mayor']['post'],
             color: Colors.lime[200],
           ),
           NameCard(
-            image: 'images/default.png',
-            name: 'मंजु भण्डारी (सुबेदी)',
-            phNo: '९८५२०३८६००',
-            email: 'deputymayor@dharan.gov.np',
-            post: 'नगर उप-प्रमुख',
+            image: ngr['vice-mayor']['image'],
+            name: ngr['vice-mayor']['name'],
+            phNo: ngr['vice-mayor']['contact'],
+            email: ngr['vice-mayor']['email'],
+            post: ngr['vice-mayor']['post'],
             color: Colors.cyan[200],
           ),
           Expanded(
             child: GridView.builder(
-                itemCount: 12,
+                itemCount: ngr['wards'].length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4),
                 itemBuilder: (context, i) {
@@ -54,6 +71,14 @@ class ThirdTab extends StatelessWidget {
         ],
       ),
     );
+
+
+      }
+
+          return Center(child: Text("loading..."),);
+
+    });
+    
   }
 }
 
@@ -72,25 +97,26 @@ class NameCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: color,
-      elevation: 5,
+      elevation: 2,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(0),
       ),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Expanded(
+              flex:1,
                 child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.asset(image!=null?image:'images/default.png'),
+              child: Image.asset(image!=null?image:'images/default.png',fit: BoxFit.contain,),
             )),
             SizedBox(
-              width: 10,
+              width: 8,
             ),
             Expanded(
-              flex: 2,
+              flex: 4,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
