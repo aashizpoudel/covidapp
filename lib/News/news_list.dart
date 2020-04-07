@@ -4,25 +4,11 @@ import 'package:flutter/material.dart';
 class NewsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-          child: Scaffold(
-        appBar: AppBar(
-            title: Text('समाचार'),
-            bottom: TabBar(tabs: [
-              Text('मुख्य'),
-              Text('विस्व'),
-              // Text('आर्थिक'),
-              // Text('राजनीतिक '),
-              // Text('खेलकुद'),
-              // Text('स्वास्थ'),
-            ]),
-        ),
-        body: TabBarView(children: [
-            NewsHome(),
-            NewsHome()
-        ]),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('कोभिड-१९ बारे समाचार'),
       ),
+      body: NewsHome(),
     );
   }
 }
