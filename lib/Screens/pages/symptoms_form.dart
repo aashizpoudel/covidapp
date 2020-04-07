@@ -355,7 +355,7 @@ class _SymptomsFormState extends State<SymptomsForm> {
                               return Container(
                                 child: Column(
                                   children: <Widget>[
-                                    Text('Congratz You Have Corona'),
+                                    Text('Your data has been uploaded. We will contact you soon.'),
                                   ],
                                 ),
                               );

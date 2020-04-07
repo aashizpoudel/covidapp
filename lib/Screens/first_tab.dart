@@ -1,7 +1,14 @@
 import 'package:covidapp/Screens/components/middle_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class FirstTab extends StatelessWidget {
+
+  _callChisapani(number) async{
+  bool res = await FlutterPhoneDirectCaller.callNumber(number);
+}
+
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -105,8 +112,10 @@ class FirstTab extends StatelessWidget {
           child: MiddleCard(
               icon: Icons.local_hospital,
               titleLabel: "चिसापानी अस्पताल हटलाइन",
-              bodyLabel: "9860048078",
-              onTap: () {}),
+              bodyLabel: "078-580405",
+              onTap: () {
+                _callChisapani('078580405');
+              }),
         ),
         Center(
           child: RaisedButton.icon(

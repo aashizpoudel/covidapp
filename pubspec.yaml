@@ -21,6 +21,8 @@ dependencies:
   webview_flutter:
   http:
   flutter_html:
+  flutter_phone_direct_caller: 1.0.1
+
   flutter:
     sdk: flutter
 

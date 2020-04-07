@@ -12,7 +12,7 @@ class CovidHome extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           leading: SizedBox(width: 10,),
-          title: Text('Covid-19 Bardaghat'),
+          title: Text('कोभिड हेल्पलाईन बर्दघाट"'),
          
        ),
        bottomNavigationBar:  TabBar(
